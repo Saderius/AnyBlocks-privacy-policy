@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="https://i.imgur.com/TUPr7Sf.png" alt="AnyTile Logo" width="120" />
+  <img src="https://i.imgur.com/VqValEn.png" alt="AnyBlocks: Power Block Puzzle Logo" width="130" style="border-radius: 24px;" />
   
-  <h1>⚡ AnyTile: Wear OS Shortcuts</h1>
-  <p><strong>The official landing page & privacy policy for AnyTile on Wear OS.</strong></p>
+  <h1>🧱 AnyBlocks: Power Block Puzzle</h1>
+  <p><strong>Official landing page and privacy policy for AnyBlocks (Caudex).</strong></p>
+  <p><em>Relaxing block puzzle with tactical powers. Rotate, flip & combo offline!</em></p>
   
   [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](#)
   [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](#)
@@ -11,25 +12,54 @@
 
 ---
 
-## 📖 About
+## 📖 About AnyBlocks (Caudex)
 
-This repository hosts the landing page and privacy policy site for **AnyTile: Wear OS Shortcuts**. 
-It guarantees full transparency and outlines strict privacy commitments: minimal data collection (for analytics and crash reporting only), no ads, and secure data handling.
+Welcome to **AnyBlocks (Caudex)** — a tactile block puzzle adventure that pairs the classic, addictive line-clearing combo loop with real tactical powers and handcrafted sensory themes.
 
-**AnyTile** is the ultimate Wear OS shortcut maker. It lets you bypass the menus entirely to launch exact app activities, deep links, and intents instantly from custom tiles and watch face complications.
+No timers. No unwinnable boards. Just pure, relaxing puzzle flow.
 
-## ✨ App Core Highlights
+This repository hosts the official landing page and privacy policy site for AnyBlocks. It guarantees complete transparency into our privacy commitments: **100% ad-free, zero Firebase implementation, zero analytics tracking, and fully offline on-device storage.**
 
-- **Bypass the App Drawer:** Launch apps directly from Wear OS complications or tiles.
-- **Custom Wear OS Complications:** Turn any watch face into a productivity powerhouse.
-- **Personalized Swipe Tiles:** Create custom tiles populated solely with your most-used activities.
-- **Zero Battery Drain:** Uses standard native Android APIs so shortcuts remain dormant until tapped.
+---
+
+## ✨ A Smarter Block Puzzle Experience
+
+Tired of losing runs just because you were dealt an awkward, impossible piece? In AnyBlocks, your puzzle skill gives you real agency. Build combos and clear rows or columns to charge tactical artifacts:
+
+- **The Gyroscope:** Rotate any piece in your tray by 90° to fit tight spaces.
+- **The Speculum:** Mirror and flip shapes horizontally or vertically.
+- **Prism Splitter:** Shatter large, clumsy blocks into loose 1×1 micro-blocks.
+- **Solar Pulse:** Clear an entire row and column in a radiant cross of light.
+
+You earn your powers simply through clever placements and line clears. Outsmart the grid, trigger chain reactions, and keep your streak alive.
+
+---
+
+## 🎨 Three Handcrafted Aesthetic Worlds
+
+Enjoy a soothing, artistic presentation with three distinct audiovisual themes:
+
+- **Folio Botanica** — A Victorian naturalist's study. Pressed botanical specimens, warm lithograph tones, and organic tactile clicks.
+- **Opus Orbital** — An observatory at the edge of the atmosphere. Deep cosmic hues, plasma cores, and resonant chime harmonies.
+- **Prismatica** — A lapidary study in refracted light. Faceted crystalline surfaces, diamond shears, and gemstone bursts.
+
+---
+
+## 🛡️ Privacy & Offline Guarantees
+
+- **No Ads:** Absolutely zero banner ads, interstitials, video rewards, or ad network SDKs.
+- **No Firebase:** Zero Firebase libraries (no Crashlytics, Firestore, Analytics, or Auth).
+- **No Telemetry / Analytics:** Zero session tracking, user profiling, or telemetry tracking.
+- **100% Offline & Local:** Runs without an internet connection. High scores, unlocked themes, and saved games stay securely on your device.
+- **Family Compliant:** Designed for Everyone (Ages 3+), compliant with Google Play Families Policy and COPPA.
+
+---
 
 ## 💻 Tech Stack
 
 - **Framework:** React 19 + Vite
-- **Styling:** Tailwind CSS + UI components inspired by modern clean design
-- **Animations:** Motion (formerly Framer Motion)
+- **Styling:** Tailwind CSS
+- **Animations:** Motion (`motion/react`)
 - **Icons:** Lucide React
 
 ## 🚀 Getting Started
@@ -54,5 +84,5 @@ npm run build
 ---
 
 <div align="center">
-  <i>Skip the menus. Bridge the clicking gap on your smartwatch.</i>
+  <i>Relaxing block puzzle with tactical powers. Rotate, flip & combo offline!</i>
 </div>

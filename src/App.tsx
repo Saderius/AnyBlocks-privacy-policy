@@ -3,18 +3,22 @@ import {
   EyeOff, 
   Zap, 
   Gamepad2, 
-  Palette, 
-  Bomb, 
-  Flame, 
+  Compass, 
+  SunMedium, 
+  Split, 
+  FlipHorizontal2, 
+  RotateCw, 
   Mail, 
   Ban, 
   CheckCircle2, 
   Sparkles,
   Lock,
-  Trophy,
   Smile,
-  RefreshCw,
-  HardDrive
+  HardDrive,
+  Leaf,
+  Globe2,
+  Gem,
+  Volume2
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ReactNode, useState } from 'react';
@@ -39,9 +43,10 @@ function Section({ title, children, id }: { title: string; children: ReactNode; 
   );
 }
 
-function GameFeatureCard({ 
+function HighlightCard({ 
   icon: Icon, 
   title, 
+  subtitle,
   description, 
   delay,
   accentColor = "text-amber-600",
@@ -49,6 +54,7 @@ function GameFeatureCard({
 }: { 
   icon: any; 
   title: string; 
+  subtitle?: string;
   description: string; 
   delay: number;
   accentColor?: string;
@@ -61,49 +67,53 @@ function GameFeatureCard({
       whileHover={{ scale: 1.02, y: -4 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="bg-white/75 backdrop-blur-xl border border-white/90 p-6 md:p-8 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col gap-4 hover:shadow-[0_16px_40px_rgba(255,180,100,0.1)] transition-all"
+      className="bg-white/80 backdrop-blur-xl border border-white/90 p-6 md:p-8 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col gap-4 hover:shadow-[0_16px_40px_rgba(255,180,100,0.12)] transition-all"
     >
-      <div className={`w-14 h-14 ${bgColor} rounded-2xl flex items-center justify-center ${accentColor} shadow-inner`}>
-        <Icon size={26} strokeWidth={2} />
+      <div className="flex items-center gap-3">
+        <div className={`w-12 h-12 md:w-14 md:h-14 ${bgColor} rounded-2xl flex items-center justify-center ${accentColor} shadow-inner shrink-0`}>
+          <Icon size={24} strokeWidth={2} />
+        </div>
+        <div>
+          <h3 className="font-semibold text-lg md:text-xl text-slate-800 font-display">{title}</h3>
+          {subtitle && <span className="text-xs font-mono font-medium text-slate-400 uppercase tracking-wider">{subtitle}</span>}
+        </div>
       </div>
-      <div>
-        <h3 className="font-semibold text-xl text-slate-800 mb-2 font-display">{title}</h3>
-        <p className="text-slate-600 leading-relaxed text-sm md:text-base">{description}</p>
-      </div>
+      <p className="text-slate-600 leading-relaxed text-sm md:text-base">{description}</p>
     </motion.div>
   );
 }
 
 export default function App() {
   const [imgError, setImgError] = useState(false);
+  const appIconUrl = "https://i.imgur.com/VqValEn.png";
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#F7F9FC] font-sans selection:bg-amber-200">
-      {/* Dynamic Ambient Background Blobs */}
+    <div className="min-h-screen relative overflow-hidden bg-[#F8FAFC] font-sans selection:bg-amber-200">
+      {/* Ambient Visual Caustic Lights */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-[12%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-amber-200/45 mix-blend-multiply filter blur-[95px] animate-blob" />
-        <div className="absolute top-[20%] -right-[10%] w-[55vw] h-[55vw] rounded-full bg-teal-100/50 mix-blend-multiply filter blur-[95px] animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-[15%] left-[25%] w-[50vw] h-[50vw] rounded-full bg-rose-100/50 mix-blend-multiply filter blur-[95px] animate-blob animation-delay-4000" />
+        <div className="absolute -top-[12%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-amber-200/40 mix-blend-multiply filter blur-[100px] animate-blob" />
+        <div className="absolute top-[22%] -right-[10%] w-[55vw] h-[55vw] rounded-full bg-emerald-100/50 mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-[15%] left-[25%] w-[50vw] h-[50vw] rounded-full bg-sky-100/50 mix-blend-multiply filter blur-[100px] animate-blob animation-delay-4000" />
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header / Hero Section */}
         <header className="pt-16 pb-10 md:pt-24 md:pb-16 px-6 relative">
           <div className="max-w-4xl mx-auto text-center">
-            {/* App Icon */}
+            {/* App Icon from Imgur */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              whileHover={{ rotate: 4, scale: 1.05 }}
-              className="w-28 h-28 sm:w-32 sm:h-32 shadow-[0_16px_36px_rgba(240,160,110,0.25)] border-2 border-white rounded-[2.5rem] overflow-hidden mx-auto mb-6 flex items-center justify-center bg-gradient-to-b from-[#FFF5EE] to-[#FFE8D6] p-1.5 transition-transform"
+              whileHover={{ rotate: 3, scale: 1.05 }}
+              className="w-28 h-28 sm:w-32 sm:h-32 shadow-[0_16px_36px_rgba(240,160,110,0.28)] border-2 border-white rounded-[2.25rem] overflow-hidden mx-auto mb-6 flex items-center justify-center bg-white p-1 transition-transform"
               id="app-logo"
             >
               {!imgError ? (
                 <img 
-                  src="/AnyBlocksIcon.svg" 
-                  alt="AnyBlocks Game Icon" 
-                  className="w-full h-full object-contain" 
+                  src={appIconUrl} 
+                  alt="AnyBlocks: Power Block Puzzle Icon" 
+                  className="w-full h-full object-cover rounded-[2rem]" 
                   onError={() => setImgError(true)}
                 />
               ) : (
@@ -111,7 +121,7 @@ export default function App() {
               )}
             </motion.div>
             
-            {/* Category Tag */}
+            {/* Official Tagline / Pill */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,7 +129,7 @@ export default function App() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-amber-200/80 text-amber-900 text-sm font-medium mb-5 backdrop-blur-md shadow-xs"
             >
               <Sparkles size={16} className="text-amber-600" />
-              <span>Block Blast Puzzle Game • Powers & Themes</span>
+              <span>Tactile Block Puzzle • Powers & Handcrafted Themes</span>
             </motion.div>
 
             {/* Title */}
@@ -130,26 +140,27 @@ export default function App() {
               className="text-4xl md:text-6xl font-display text-slate-900 tracking-tight font-bold mb-4 leading-tight"
               id="page-title"
             >
-              AnyBlocks
+              AnyBlocks: Power Block Puzzle
             </motion.h1>
             
-            {/* Tagline */}
+            {/* Short Description */}
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl md:text-2xl text-slate-700 max-w-2xl mx-auto font-light"
             >
-              Blast blocks, unleash powerful twists, and customize your board.
+              Relaxing block puzzle with tactical powers. Rotate, flip & combo offline!
             </motion.p>
 
+            {/* Full Summary Paragraph */}
             <motion.p
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: 0.3 }}
-               className="text-md md:text-lg text-slate-600 max-w-2xl mx-auto mt-4 leading-relaxed"
+               className="text-md md:text-lg text-slate-600 max-w-3xl mx-auto mt-4 leading-relaxed"
             >
-               The addictive grid block blast puzzle experience elevated with game-changing powers, exciting combos, and stunning visual themes. Zero ads, no analytics, no Firebase, and zero internet required.
+              Welcome to AnyBlocks (Caudex) — a tactile block puzzle adventure that pairs the classic, addictive line-clearing combo loop with real tactical powers and handcrafted sensory themes. No timers. No unwinnable boards. Just pure, relaxing puzzle flow.
             </motion.p>
 
             {/* Quick Assurance Badges */}
@@ -177,67 +188,114 @@ export default function App() {
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 border border-rose-200/80 text-rose-900 text-xs sm:text-sm font-medium">
                 <Smile size={15} className="text-rose-600" />
-                Kid & Family Friendly
+                Everyone (Ages 3+)
               </span>
             </motion.div>
           </div>
         </header>
 
         <main className="max-w-4xl mx-auto px-6 pb-24 w-full">
-          {/* Game Features & Privacy Highlights Grid */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16" id="game-features">
-            <GameFeatureCard 
-              icon={Flame}
-              title="Classic Block Blast Mechanics"
-              description="Drag and drop tetromino-inspired shapes onto the grid. Fill complete rows and columns to trigger satisfying combo clears and skyrocket your score."
-              delay={0.1}
-              accentColor="text-orange-600"
-              bgColor="bg-orange-50"
-            />
-            <GameFeatureCard 
-              icon={Bomb}
-              title="Exciting Special Powers"
-              description="Turn the tide when you are cornered. Use powerful twists like Board Bombs, Row Blasters, Hammer hits, and Shape Rotators to clear tricky spots."
-              delay={0.2}
-              accentColor="text-rose-600"
-              bgColor="bg-rose-50"
-            />
-            <GameFeatureCard 
-              icon={Palette}
-              title="Multiple Vibrant Themes"
-              description="Play your way with unlockable visual aesthetics—from Neon Glow and Classic Wood to Pastel Gem and Retro Arcade boards."
-              delay={0.3}
-              accentColor="text-teal-600"
-              bgColor="bg-teal-50"
-            />
-            <GameFeatureCard 
-              icon={Ban}
-              title="100% Ad-Free Gameplay"
-              description="No intrusive video ads interrupting your combos. No banner ads crowding your board, and no tracking IDs feeding ad networks."
-              delay={0.4}
-              accentColor="text-red-600"
-              bgColor="bg-red-50"
-            />
-            <GameFeatureCard 
-              icon={EyeOff}
-              title="No Analytics & No Trackers"
-              description="No telemetry SDKs, no Google Analytics, no session recorders, and no behavioral profiling. Your play sessions stay completely private."
-              delay={0.5}
-              accentColor="text-indigo-600"
-              bgColor="bg-indigo-50"
-            />
-            <GameFeatureCard 
-              icon={HardDrive}
-              title="Local High Scores & Saves"
-              description="All your best scores, unlocked themes, and power-up progression are saved strictly on your local device. Enjoy seamless offline play anytime."
-              delay={0.6}
-              accentColor="text-emerald-600"
-              bgColor="bg-emerald-50"
-            />
-          </section>
+          {/* Tactical Powers Section */}
+          <div className="mb-14">
+            <div className="text-center mb-8">
+              <span className="text-xs font-mono text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full font-semibold uppercase tracking-wider">
+                Tactical Artifacts
+              </span>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-800 mt-2">
+                A Smarter Block Puzzle Experience
+              </h2>
+              <p className="text-slate-600 max-w-xl mx-auto text-sm md:text-base mt-2">
+                Tired of losing runs to impossible pieces? Earn powers through clever placements and line clears to outsmart the 8×8 grid.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <HighlightCard 
+                icon={RotateCw}
+                title="The Gyroscope"
+                subtitle="Tactical Artifact"
+                description="Rotate any piece in your tray by 90° to fit tight spaces and preserve your board."
+                delay={0.1}
+                accentColor="text-indigo-600"
+                bgColor="bg-indigo-50"
+              />
+              <HighlightCard 
+                icon={FlipHorizontal2}
+                title="The Speculum"
+                subtitle="Tactical Artifact"
+                description="Mirror and flip shapes horizontally or vertically to create the exact configuration you need."
+                delay={0.2}
+                accentColor="text-sky-600"
+                bgColor="bg-sky-50"
+              />
+              <HighlightCard 
+                icon={Split}
+                title="Prism Splitter"
+                subtitle="Tactical Artifact"
+                description="Shatter large, clumsy blocks into loose 1×1 micro-blocks to effortlessly fill tricky isolated gaps."
+                delay={0.3}
+                accentColor="text-emerald-600"
+                bgColor="bg-emerald-50"
+              />
+              <HighlightCard 
+                icon={SunMedium}
+                title="Solar Pulse"
+                subtitle="Tactical Artifact"
+                description="Clear an entire row and column in a radiant cross of light to trigger monumental chain reactions."
+                delay={0.4}
+                accentColor="text-amber-600"
+                bgColor="bg-amber-50"
+              />
+            </div>
+          </div>
+
+          {/* Handcrafted Aesthetic Worlds */}
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <span className="text-xs font-mono text-teal-700 bg-teal-100/80 px-3 py-1 rounded-full font-semibold uppercase tracking-wider">
+                Audiovisual Worlds
+              </span>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-800 mt-2">
+                Three Handcrafted Aesthetic Themes
+              </h2>
+              <p className="text-slate-600 max-w-xl mx-auto text-sm md:text-base mt-2">
+                Enjoy a soothing, artistic presentation accompanied by responsive haptics and procedural harmonies.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <HighlightCard 
+                icon={Leaf}
+                title="Folio Botanica"
+                subtitle="Victorian Study"
+                description="Pressed botanical specimens, warm lithograph tones, and organic tactile clicks."
+                delay={0.1}
+                accentColor="text-emerald-700"
+                bgColor="bg-emerald-50"
+              />
+              <HighlightCard 
+                icon={Globe2}
+                title="Opus Orbital"
+                subtitle="Cosmic Observatory"
+                description="Observatory at the edge of the atmosphere. Deep cosmic hues, plasma cores, and resonant chime harmonies."
+                delay={0.2}
+                accentColor="text-blue-600"
+                bgColor="bg-blue-50"
+              />
+              <HighlightCard 
+                icon={Gem}
+                title="Prismatica"
+                subtitle="Refracted Light"
+                description="A lapidary study in refracted light. Faceted crystalline surfaces, diamond shears, and gemstone bursts."
+                delay={0.3}
+                accentColor="text-purple-600"
+                bgColor="bg-purple-50"
+              />
+            </div>
+          </div>
 
           {/* Formal Privacy Policy Document */}
-          <div className="bg-white/80 backdrop-blur-2xl p-8 md:p-12 md:px-16 rounded-[2.5rem] shadow-xl border border-white/90 relative overflow-hidden" id="privacy-policy">
+          <div className="bg-white/85 backdrop-blur-2xl p-8 md:p-12 md:px-16 rounded-[2.5rem] shadow-xl border border-white/90 relative overflow-hidden" id="privacy-policy">
             {/* Prismatic Top Border Gradient */}
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#FFD56B] via-[#5CFFD0] to-[#FFA07A]" />
             
@@ -247,7 +305,7 @@ export default function App() {
                   Official Privacy Policy
                 </span>
                 <span className="text-sm font-semibold text-slate-800">
-                  AnyBlocks: Block Puzzle Game
+                  AnyBlocks: Power Block Puzzle
                 </span>
               </div>
               <span className="text-xs font-mono text-slate-500 font-medium">
@@ -257,20 +315,20 @@ export default function App() {
 
             <Section title="1. Overview & Commitment to Zero Data Collection" id="overview">
               <p>
-                <b>AnyBlocks</b> is a block puzzle game inspired by block blast mechanics, featuring unique powers and customizable visual themes. This Privacy Policy outlines our transparent, player-first stance on user privacy.
+                <b>AnyBlocks: Power Block Puzzle</b> (also known as AnyBlocks / Caudex) is designed as a relaxing, strategy-first tactical block puzzle game. We believe privacy should be absolute and effortless.
               </p>
               <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/70 text-amber-900 text-sm sm:text-base leading-relaxed">
-                <strong>Summary in Plain English:</strong> AnyBlocks is an offline, standalone game. We do not collect, store, transmit, or monetize any of your personal data or gameplay habits.
+                <strong>Plain English Summary:</strong> AnyBlocks is an offline, standalone single-player game. We do not collect, store, transmit, or monetize any of your personal data or gameplay habits.
               </div>
               <ul className="list-disc pl-5 space-y-2 mt-4 text-slate-600">
                 <li>
-                  <strong className="text-slate-800">No Personally Identifiable Information (PII):</strong> We never collect names, email addresses, phone numbers, location data, IP addresses, contacts, or photos.
+                  <strong className="text-slate-800">No Personally Identifiable Information (PII):</strong> We never collect names, email addresses, phone numbers, GPS coordinates, IP addresses, contacts, or photos.
                 </li>
                 <li>
-                  <strong className="text-slate-800">No Telemetry or Analytics:</strong> AnyBlocks contains zero analytics libraries. We do not track games played, combo counts, session lengths, or user retention metrics.
+                  <strong className="text-slate-800">No Telemetry or Analytics:</strong> AnyBlocks contains zero analytics libraries. We do not track puzzle moves, high scores, time played, or user retention metrics.
                 </li>
                 <li>
-                  <strong className="text-slate-800">Zero Advertisements:</strong> There are no third-party ad networks, no interstitial pop-ups, no rewarded ad video SDKs, and no tracking cookies.
+                  <strong className="text-slate-800">Zero Advertisements:</strong> There are no third-party ad networks, no banner ads, no interstitial pop-ups, no rewarded ad video SDKs, and no tracking cookies. The Google Advertising ID (AD_ID) permission is completely stripped.
                 </li>
                 <li>
                   <strong className="text-slate-800">No User Accounts:</strong> You do not need to register, create a username, or sign in to play.
@@ -280,7 +338,7 @@ export default function App() {
 
             <Section title="2. Zero Firebase & Zero Third-Party Tracking" id="no-firebase">
               <p>
-                Unlike many mobile games that incorporate heavy cloud frameworks for analytics and crash telemetry:
+                Unlike many modern puzzle titles that incorporate heavy cloud frameworks for telemetry and user tracking:
               </p>
               <ul className="list-disc pl-5 space-y-2 text-slate-600">
                 <li>
@@ -290,54 +348,56 @@ export default function App() {
                   <strong className="text-slate-800">No Third-Party SDKs:</strong> We do not include tracking or advertising software development kits from Facebook, Unity Ads, AppLovin, ironSource, or any data brokers.
                 </li>
                 <li>
-                  <strong className="text-slate-800">App Store Platform:</strong> AnyBlocks is distributed through official app stores (such as Google Play). Standard store-level crash or installation statistics provided automatically by Google are governed solely by <a href="https://policies.google.com/privacy" className="text-amber-700 hover:text-amber-800 underline underline-offset-4 decoration-amber-500/30 transition-colors" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.
+                  <strong className="text-slate-800">Google Play Store:</strong> AnyBlocks is distributed through the Google Play Store. Standard platform-level download or crash statistics provided automatically by Google are governed solely by <a href="https://policies.google.com/privacy" className="text-amber-700 hover:text-amber-800 underline underline-offset-4 decoration-amber-500/30 transition-colors" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.
                 </li>
               </ul>
             </Section>
 
             <Section title="3. Game Progression & Local Storage" id="local-storage">
               <p>
-                All gameplay state—such as your high scores, unlocked board themes, earned power-ups, and audio settings—is saved exclusively within your device’s local isolated sandbox (e.g., standard platform local storage or SharedPreferences).
+                All gameplay state—such as your high scores, unlocked themes (Folio Botanica, Opus Orbital, Prismatica), charged artifact powers, and audio settings—is saved exclusively within your device’s local isolated sandbox (standard native SharedPreferences / local storage).
               </p>
               <p>
                 This data never leaves your device:
               </p>
               <ul className="list-disc pl-5 space-y-2 text-slate-600">
-                <li>You can reset your high scores and game progress anytime by clearing the app data in your device settings.</li>
-                <li>Uninstalling the game permanently removes all stored scores, unlocked themes, and game saves from your device.</li>
+                <li>You can reset your high scores and progress anytime by clearing app data in your device's application settings.</li>
+                <li>Uninstalling the game permanently removes all stored scores, unlocked themes, and saved states from your device.</li>
               </ul>
             </Section>
 
             <Section title="4. Permissions & Device Access" id="permissions">
               <p>
-                AnyBlocks does not request access to sensitive device permissions:
+                AnyBlocks strictly adheres to the principle of minimal permissions:
               </p>
               <ul className="list-disc pl-5 space-y-2 text-slate-600">
                 <li><strong className="text-slate-800">No Location Access:</strong> The game does not read GPS or network location.</li>
                 <li><strong className="text-slate-800">No Camera or Microphone Access:</strong> No audio or video recording permissions are declared or requested.</li>
-                <li><strong className="text-slate-800">No Storage or Contacts Access:</strong> We do not access your personal files, photos, or contacts.</li>
-                <li><strong className="text-slate-800">Optional Haptic Vibration:</strong> Standard vibration permission may be used purely to deliver tactile feedback when blasting blocks or completing combos, configurable in the game settings.</li>
+                <li><strong className="text-slate-800">No Storage or Contacts Access:</strong> We do not access your personal files, media, or contacts.</li>
+                <li><strong className="text-slate-800">Tactile Haptics (VIBRATE):</strong> Used purely to deliver subtle vibration feedback when placing blocks and triggering combos. Can be toggled on or off at any time.</li>
               </ul>
             </Section>
 
-            <Section title="5. Children & Family Privacy" id="families-policy">
+            <Section title="5. Children & Families Policy Compliance" id="families-policy">
               <p>
-                Because AnyBlocks contains no ads, collects zero personal data, and features clean, family-friendly puzzle gameplay, it is designed to be fully compliant with Google Play’s Families Policy and the Children’s Online Privacy Protection Act (COPPA).
+                AnyBlocks is designed for <strong>Everyone (Ages 3+ / PEGI 3 / ESRB Everyone)</strong> with zero violence, zero gambling, and zero objectionable themes.
               </p>
-              <p>
-                We do not knowingly collect, request, or solicit any personal information from children of any age.
-              </p>
+              <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                <li>Strictly compliant with Google Play's Families Policy and the Children's Online Privacy Protection Act (COPPA).</li>
+                <li>We do not collect personal data from anyone, including children under the age of 13.</li>
+                <li>Zero advertising ensures a safe, relaxing, and distraction-free environment for puzzle enthusiasts of all ages.</li>
+              </ul>
             </Section>
 
-            <Section title="6. Changes to this Policy" id="policy-changes">
+            <Section title="6. Policy Updates & Changes" id="policy-changes">
               <p>
-                If we introduce major new features to AnyBlocks in the future, any necessary policy updates will be posted here with an updated date. However, our fundamental design philosophy of keeping AnyBlocks private, offline-first, and ad-free remains unchanged.
+                Should any future update introduce architectural changes to AnyBlocks, this policy will be promptly updated with a revised "Last Updated" date. Our fundamental design philosophy of keeping AnyBlocks private, offline-first, and ad-free remains absolute.
               </p>
             </Section>
 
             <Section title="7. Contact the Developer" id="contact">
               <p>
-                If you have questions, feedback, or suggestions about AnyBlocks or this Privacy Policy, please feel free to reach out:
+                If you have questions, feedback, or need support regarding AnyBlocks or this Privacy Policy, please contact the developer:
               </p>
               <div className="flex items-center gap-3 mt-6 p-5 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs w-fit transition-all hover:border-amber-200 hover:shadow-sm">
                 <div className="w-11 h-11 rounded-2xl bg-amber-100/80 flex items-center justify-center text-amber-700">
@@ -355,11 +415,11 @@ export default function App() {
             {/* Footer */}
             <div className="mt-14 pt-8 border-t border-slate-200/70 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
               <div className="flex items-center gap-2.5 font-medium">
-                <div className="w-6 h-6 rounded-lg overflow-hidden bg-amber-100 flex items-center justify-center shadow-xs">
-                  <img src="/AnyBlocksIcon.svg" alt="AnyBlocks" className="w-full h-full object-contain" />
+                <div className="w-7 h-7 rounded-lg overflow-hidden bg-white border border-slate-200/80 flex items-center justify-center shadow-xs">
+                  <img src={appIconUrl} alt="AnyBlocks Icon" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-slate-800 font-display font-semibold">AnyBlocks</span>
-                <span className="text-slate-400">• Block Blast Puzzle Game</span>
+                <span className="text-slate-400">• Power Block Puzzle</span>
               </div>
               <div className="text-xs sm:text-sm">
                 &copy; {new Date().getFullYear()} AnyBlocks. All rights reserved.
