@@ -1,0 +1,8 @@
+{
+  "name": "AnyBlocks Privacy Policy",
+  "description": "Official privacy policy for AnyBlocks, a block puzzle game featuring power-ups and vibrant themes. 100% ad-free with no Firebase and no analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
